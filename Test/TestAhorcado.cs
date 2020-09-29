@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using Ahorcado;
+using System.Linq;
+
 namespace Test
 {
     public class TestAhorcado
@@ -50,6 +52,56 @@ namespace Test
         {
             ahorcado.ArriesgaPalabra("palabra");
             Assert.AreNotEqual("Perdiste!", ahorcado.MostrarEstadoJuego());
+        }
+
+        [Test]
+        public void TestArriesgarLetraCorrecta()
+        {
+            Assert.IsTrue(ahorcado.ArriesgaLetra('a'));
+        }
+
+        [Test]
+        public void TestArriesgarLetraIncorrecta()
+        {
+            Assert.IsFalse(ahorcado.ArriesgaLetra('x'));
+        }
+
+        [Test]
+        public void TestArriesgarLetrasCorectas()
+        {
+            ahorcado.ArriesgaLetra('p');
+            ahorcado.ArriesgaLetra('a');
+            ahorcado.ArriesgaLetra('b');
+            Assert.IsTrue(ahorcado.ContieneLetraCorrecta('p'));
+            Assert.IsTrue(ahorcado.ContieneLetraCorrecta('a'));
+            Assert.IsTrue(ahorcado.ContieneLetraCorrecta('b'));
+        }
+
+        [Test]
+        public void TestArriesgarLetrasIncorectas()
+        {
+            ahorcado.ArriesgaLetra('x');
+            ahorcado.ArriesgaLetra('y');
+            ahorcado.ArriesgaLetra('z');
+            Assert.IsTrue(ahorcado.ContieneLetraIncorrecta('x'));
+            Assert.IsTrue(ahorcado.ContieneLetraIncorrecta('y'));
+            Assert.IsTrue(ahorcado.ContieneLetraIncorrecta('z'));
+        }
+
+        [Test]
+        public void TestIngresarNombre()
+        {
+            var nombre = "Nombre";
+            ahorcado.SetNombreUsuario(nombre);
+            Assert.AreEqual(nombre, ahorcado.GetNombreUsuario());
+        }
+
+        [Test]
+        public void TestGetNombreIncorrecto()
+        {
+            var nombre = "Nombre";
+            ahorcado.SetNombreUsuario(nombre);
+            Assert.AreNotEqual("asd", ahorcado.GetNombreUsuario());
         }
     }
 }

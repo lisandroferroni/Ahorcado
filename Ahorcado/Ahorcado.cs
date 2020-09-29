@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ahorcado.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,10 +9,12 @@ namespace Ahorcado
     public class Ahorcado
     {
         public const string PALABRA = "palabra";
-
         private string EstadoJuego { get; set; }
+        public Usuario Usuario { get; set; }
+        public List<char> LetrasCorrectas = new List<char>();
+        public List<char> LetrasIncorrectas = new List<char>();
 
-
+        
         public bool ArriesgaPalabra(string palabra)
         {
             var resultado = palabra.Equals(PALABRA);
@@ -28,5 +31,46 @@ namespace Ahorcado
             return EstadoJuego;
         }
 
+        public bool? ArriesgaLetra(char letra)
+        {
+
+            if (PALABRA.Contains(letra))
+            {
+                LetrasCorrectas.Add(letra);
+                return true;
+            }
+            else
+            {
+                LetrasIncorrectas.Add(letra);
+                return false;
+            }
+        }
+
+        public bool? ContieneLetraCorrecta(char letra)
+        {
+            return LetrasCorrectas.Contains(letra);
+        }
+
+        public bool? ContieneLetraIncorrecta(char letra)
+        {
+            return LetrasIncorrectas.Contains(letra);
+        }
+
+        public void SetNombreUsuario(string nombre)
+        {
+            Usuario = new Usuario() {Nombre = nombre };
+        }
+
+        public string GetNombreUsuario()
+        {
+            try
+            {
+                return Usuario.GetNombre();
+            }
+            catch
+            {
+                return "";
+            }                
+        }
     }
 }
