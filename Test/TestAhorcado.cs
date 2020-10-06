@@ -103,5 +103,36 @@ namespace Test
             ahorcado.SetNombreUsuario(nombre);
             Assert.AreNotEqual("asd", ahorcado.GetNombreUsuario());
         }
+
+        [Test]
+        public void TestGanoArriegandoLetras()
+        {
+            //arrange
+            ahorcado.ArriesgaLetra('p');
+            ahorcado.ArriesgaLetra('a');
+            ahorcado.ArriesgaLetra('b');
+            ahorcado.ArriesgaLetra('r');
+            ahorcado.ArriesgaLetra('l');
+            //act
+            var result = ahorcado.Gano();
+            //assert
+            Assert.IsTrue(result);
+            Assert.AreEqual("Ganaste!", ahorcado.MostrarEstadoJuego());
+        }
+
+        [Test]
+        public void TestNoGanoArriegandoLetras()
+        {
+            //arrange
+            ahorcado.ArriesgaLetra('a');
+            ahorcado.ArriesgaLetra('b');
+            ahorcado.ArriesgaLetra('r');
+            ahorcado.ArriesgaLetra('l');
+            //act
+            var result = ahorcado.Gano();
+            //assert
+            Assert.IsFalse(result);
+            Assert.AreNotEqual("Ganaste!", ahorcado.MostrarEstadoJuego());
+        }
     }
 }

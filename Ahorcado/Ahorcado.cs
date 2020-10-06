@@ -8,13 +8,13 @@ namespace Ahorcado
 {
     public class Ahorcado
     {
-        public const string PALABRA = "palabra";
+        //TODO: pasar el hardcode al lado de tests
+        public string PALABRA = "palabra";
         private string EstadoJuego { get; set; }
         public Usuario Usuario { get; set; }
         public List<char> LetrasCorrectas = new List<char>();
         public List<char> LetrasIncorrectas = new List<char>();
 
-        
         public bool ArriesgaPalabra(string palabra)
         {
             var resultado = palabra.Equals(PALABRA);
@@ -46,6 +46,15 @@ namespace Ahorcado
             }
         }
 
+        public bool Gano()
+        {
+            List<char> datalist = new List<char>();
+            datalist.AddRange(PALABRA);
+            var result = datalist.OrderBy(s => s).Distinct().SequenceEqual(LetrasCorrectas.OrderBy(s => s).Distinct());
+            if (result) EstadoJuego = "Ganaste!";
+            return result;
+        }
+
         public bool? ContieneLetraCorrecta(char letra)
         {
             return LetrasCorrectas.Contains(letra);
@@ -58,7 +67,7 @@ namespace Ahorcado
 
         public void SetNombreUsuario(string nombre)
         {
-            Usuario = new Usuario() {Nombre = nombre };
+            Usuario = new Usuario() { Nombre = nombre };
         }
 
         public string GetNombreUsuario()
@@ -70,7 +79,7 @@ namespace Ahorcado
             catch
             {
                 return "";
-            }                
+            }
         }
     }
 }
