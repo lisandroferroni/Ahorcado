@@ -7,11 +7,13 @@ namespace Test
     public class TestAhorcado
     {
         Ahorcado.Ahorcado ahorcado;
+        Ahorcado.Ahorcado ahorcadoPalabraAleatoria;
 
         [SetUp]
         public void Setup()
         {
-            ahorcado = new Ahorcado.Ahorcado();
+            ahorcado = new Ahorcado.Ahorcado("palabra");
+            ahorcadoPalabraAleatoria = new Ahorcado.Ahorcado();
         }
 
         [Test]

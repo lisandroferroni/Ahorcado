@@ -1,4 +1,5 @@
 ﻿using Ahorcado.Models;
+using Ahorcado.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +7,26 @@ using System.Threading.Tasks;
 
 namespace Ahorcado
 {
-    public class Ahorcado
+    public class Ahorcado : IAhorcado
     {
-        //TODO: pasar el hardcode al lado de tests
-        public string PALABRA = "palabra";
+        public Ahorcado()
+        {
+            Palabra = Palabras.GetPalabraAleatoria();
+        }
+
+        public Ahorcado(string palabra)
+        {
+            Palabra = palabra;
+        }
+
+        public static Ahorcado Instance { get; private set; }
+
+        public static void Init(string palabra = "")
+        {
+            Instance = palabra == "" ? new Ahorcado() : new Ahorcado(palabra);
+        }
+
+        public string Palabra { get; set; }
         private string EstadoJuego { get; set; }
         public Usuario Usuario { get; set; }
         public List<char> LetrasCorrectas = new List<char>();
@@ -17,7 +34,7 @@ namespace Ahorcado
 
         public bool ArriesgaPalabra(string palabra)
         {
-            var resultado = palabra.Equals(PALABRA);
+            var resultado = palabra.Equals(Palabra);
             if (resultado)
                 EstadoJuego = "Ganaste!";
             else
@@ -33,8 +50,7 @@ namespace Ahorcado
 
         public bool? ArriesgaLetra(char letra)
         {
-
-            if (PALABRA.Contains(letra))
+            if (Palabra.Contains(letra))
             {
                 LetrasCorrectas.Add(letra);
                 return true;
@@ -49,7 +65,7 @@ namespace Ahorcado
         public bool Gano()
         {
             List<char> datalist = new List<char>();
-            datalist.AddRange(PALABRA);
+            datalist.AddRange(Palabra);
             var result = datalist.OrderBy(s => s).Distinct().SequenceEqual(LetrasCorrectas.OrderBy(s => s).Distinct());
             if (result) EstadoJuego = "Ganaste!";
             return result;
@@ -80,6 +96,16 @@ namespace Ahorcado
             {
                 return "";
             }
+        }
+
+        public string GetPalabra()
+        {
+            return this.Palabra;
+        }
+
+        public int GetLongitudPalabra()
+        {
+            return this.Palabra.Length;
         }
     }
 }
