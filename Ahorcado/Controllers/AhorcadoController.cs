@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ahorcado.Util;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Ahorcado.Controllers
 {
@@ -16,7 +19,9 @@ namespace Ahorcado.Controllers
         public string InicializarAhorcado()
         {
             Ahorcado.Init();
-            return Ahorcado.Instance.GetPalabra();
+            Result result = new Result { Success = true, Value = Ahorcado.Instance.GetPalabra(), Info = "ABC" };
+            string json = JsonConvert.SerializeObject(result);
+            return json;
         }
 
         // GET: api/<AhorcadoController>
