@@ -52,8 +52,6 @@ namespace Ahorcado.Controllers
         [ActionName("arriesgaLetra")]
         public string ArriesgaLetra([FromBody] ArriesgaLetraInput request)
         {
-            Ahorcado.Instance.ArriesgaLetra(request.Letra);
-
             return JsonConvert.SerializeObject(
                 new Result
                 {
@@ -70,43 +68,11 @@ namespace Ahorcado.Controllers
             return Ahorcado.Instance.MostrarEstadoJuego();
         }
 
-
-
-        // GET: api/<AhorcadoController>
         [HttpGet()]
         [ActionName("palabra")]
         public string GetPalabra()
         {
             return Ahorcado.Instance.GetPalabra();
         }
-
-               
-
-        
-
-        // GET api/<AhorcadoController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/<AhorcadoController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        //// PUT api/<AhorcadoController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<AhorcadoController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

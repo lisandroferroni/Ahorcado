@@ -9,30 +9,35 @@ namespace Ahorcado
 {
     public class Ahorcado : IAhorcado
     {
+        public string Palabra { get; set; }
+        public string EstadoJuego { get; set; }
+        public Usuario Usuario { get; set; }
+        public static Ahorcado Instance { get; private set; }
+        public int IntentosRestantes { get; set; }
+
+        public List<char> LetrasCorrectas = new List<char>();
+        public List<char> LetrasIncorrectas = new List<char>();
+        public const int NUMERO_INTENTOS = 5;
+
+
         public Ahorcado()
         {
             Palabra = Palabras.GetPalabraAleatoria();
             EstadoJuego = "En juego";
+            IntentosRestantes = NUMERO_INTENTOS;
         }
 
         public Ahorcado(string palabra)
         {
             Palabra = palabra;
             EstadoJuego = "En juego";
+            IntentosRestantes = NUMERO_INTENTOS;
         }
-
-        public static Ahorcado Instance { get; private set; }
 
         public static void Init(string palabra = "")
         {
-            Instance = palabra == "" ? new Ahorcado() : new Ahorcado(palabra);
-        }
-
-        public string Palabra { get; set; }
-        public string EstadoJuego { get; set; }
-        public Usuario Usuario { get; set; }
-        public List<char> LetrasCorrectas = new List<char>();
-        public List<char> LetrasIncorrectas = new List<char>();
+            Instance = palabra == "" ? new Ahorcado() : new Ahorcado(palabra);            
+        }       
 
         public bool ArriesgaPalabra(string palabra)
         {
@@ -62,8 +67,9 @@ namespace Ahorcado
             else
             {
                 LetrasIncorrectas.Add(letra);
+                IntentosRestantes--;
                 result = false;
-            }
+            }            
             Gano();
             return result;
         }
@@ -75,6 +81,7 @@ namespace Ahorcado
 
             var result = datalist.OrderBy(s => s).Distinct().SequenceEqual(LetrasCorrectas.OrderBy(s => s).Distinct());
             if (result) EstadoJuego = "Ganaste!";
+            if (IntentosRestantes == 0) EstadoJuego = "Perdiste!";
             return result;
         }
 
