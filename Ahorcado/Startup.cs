@@ -32,7 +32,8 @@ namespace Ahorcado
                 options.AddPolicy("AllowMyOrigin",
                 builder => builder.WithOrigins(
                     "http://localhost:5000/",
-                    "http://localhost:4200/")
+                    "http://localhost:4200/",
+                    "https://localhost:44365/")
                     .WithMethods("POST", "GET", "PUT")
                     .WithHeaders("*")
                     );

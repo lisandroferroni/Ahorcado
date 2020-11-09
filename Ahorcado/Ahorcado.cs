@@ -27,7 +27,7 @@ namespace Ahorcado
         }
 
         public string Palabra { get; set; }
-        private string EstadoJuego { get; set; }
+        public string EstadoJuego { get; set; }
         public Usuario Usuario { get; set; }
         public List<char> LetrasCorrectas = new List<char>();
         public List<char> LetrasIncorrectas = new List<char>();
@@ -48,7 +48,7 @@ namespace Ahorcado
             return EstadoJuego;
         }
 
-        public bool? ArriesgaLetra(char letra)
+        public bool ArriesgaLetra(char letra)
         {
             if (Palabra.Contains(letra))
             {

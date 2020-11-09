@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ahorcado.Models;
 using Ahorcado.Util;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -24,12 +25,39 @@ namespace Ahorcado.Controllers
             return json;
         }
 
+        [HttpPost]
+        [ActionName("arriesgaPalabra")]
+        public string ArriesgaPalabra([FromBody] PalabraInput palabra)
+        {
+            return JsonConvert.SerializeObject(
+                new Result
+                {
+                    Success = true,
+                    Value = Ahorcado.Instance.ArriesgaPalabra(palabra.Palabra).ToString(),
+                    Info = Ahorcado.Instance.EstadoJuego
+                });
+        }
+
         // GET: api/<AhorcadoController>
         [HttpGet()]
         [ActionName("palabra")]
         public string GetPalabra()
         {
             return Ahorcado.Instance.GetPalabra();
+        }
+
+        [HttpPost]
+        [ActionName("arriesgaLetra")]
+        public bool ArriesgaLetra([FromBody] char letra)
+        {
+            return Ahorcado.Instance.ArriesgaLetra(letra);
+        }        
+
+        [HttpGet()]
+        [ActionName("estado")]
+        public string GetEstadoJuego()
+        {
+            return Ahorcado.Instance.MostrarEstadoJuego();
         }
 
         // GET api/<AhorcadoController>/5
