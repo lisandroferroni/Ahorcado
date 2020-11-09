@@ -20,7 +20,17 @@ namespace Ahorcado.Controllers
         public string InicializarAhorcado()
         {
             Ahorcado.Init();
-            Result result = new Result { Success = true, Value = Ahorcado.Instance.GetPalabra(), Info = "ABC" };
+            Result result = new Result { Success = true, Value = Ahorcado.Instance.GetPalabra(), Info = "Juego inicializado" };
+            string json = JsonConvert.SerializeObject(result);
+            return json;
+        }
+
+        [HttpPost]
+        [ActionName("inicioMultijugador")]
+        public string InicializarAhorcadoMultijugador([FromBody] PalabraInput request)
+        {
+            Ahorcado.Init(request.Palabra);
+            Result result = new Result { Success = true, Value = Ahorcado.Instance.GetPalabra(), Info = "Juego Multijugador inicializado" };
             string json = JsonConvert.SerializeObject(result);
             return json;
         }
