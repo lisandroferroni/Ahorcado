@@ -17,8 +17,6 @@ namespace Test
         {
             var palabraAleatoria = Palabras.GetPalabraAleatoria();
             Assert.IsNotNull(palabraAleatoria);
-        }
-
-        
+        }        
     }
 }

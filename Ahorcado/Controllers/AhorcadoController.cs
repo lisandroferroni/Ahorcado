@@ -27,16 +27,40 @@ namespace Ahorcado.Controllers
 
         [HttpPost]
         [ActionName("arriesgaPalabra")]
-        public string ArriesgaPalabra([FromBody] PalabraInput palabra)
+        public string ArriesgaPalabra([FromBody] PalabraInput request)
         {
             return JsonConvert.SerializeObject(
                 new Result
                 {
                     Success = true,
-                    Value = Ahorcado.Instance.ArriesgaPalabra(palabra.Palabra).ToString(),
-                    Info = Ahorcado.Instance.EstadoJuego
+                    Value = Ahorcado.Instance.ArriesgaPalabra(request.Palabra).ToString(),
+                    Info = Ahorcado.Instance.MostrarEstadoJuego()
                 });
         }
+
+        [HttpPost]
+        [ActionName("arriesgaLetra")]
+        public string ArriesgaLetra([FromBody] ArriesgaLetraInput request)
+        {
+            Ahorcado.Instance.ArriesgaLetra(request.Letra);
+
+            return JsonConvert.SerializeObject(
+                new Result
+                {
+                    Success = true,
+                    Value = Ahorcado.Instance.ArriesgaLetra(request.Letra).ToString(),
+                    Info = Ahorcado.Instance.MostrarEstadoJuego()
+                });
+        }
+
+        [HttpGet()]
+        [ActionName("estado")]
+        public string GetEstadoJuego()
+        {
+            return Ahorcado.Instance.MostrarEstadoJuego();
+        }
+
+
 
         // GET: api/<AhorcadoController>
         [HttpGet()]
@@ -46,19 +70,9 @@ namespace Ahorcado.Controllers
             return Ahorcado.Instance.GetPalabra();
         }
 
-        [HttpPost]
-        [ActionName("arriesgaLetra")]
-        public bool ArriesgaLetra([FromBody] char letra)
-        {
-            return Ahorcado.Instance.ArriesgaLetra(letra);
-        }        
+               
 
-        [HttpGet()]
-        [ActionName("estado")]
-        public string GetEstadoJuego()
-        {
-            return Ahorcado.Instance.MostrarEstadoJuego();
-        }
+        
 
         // GET api/<AhorcadoController>/5
         //[HttpGet("{id}")]

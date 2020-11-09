@@ -12,11 +12,13 @@ namespace Ahorcado
         public Ahorcado()
         {
             Palabra = Palabras.GetPalabraAleatoria();
+            EstadoJuego = "En juego";
         }
 
         public Ahorcado(string palabra)
         {
             Palabra = palabra;
+            EstadoJuego = "En juego";
         }
 
         public static Ahorcado Instance { get; private set; }
@@ -50,22 +52,27 @@ namespace Ahorcado
 
         public bool ArriesgaLetra(char letra)
         {
+            bool result;
             if (Palabra.Contains(letra))
             {
                 LetrasCorrectas.Add(letra);
-                return true;
+                
+                result = true;
             }
             else
             {
                 LetrasIncorrectas.Add(letra);
-                return false;
+                result = false;
             }
+            Gano();
+            return result;
         }
 
         public bool Gano()
         {
             List<char> datalist = new List<char>();
             datalist.AddRange(Palabra);
+
             var result = datalist.OrderBy(s => s).Distinct().SequenceEqual(LetrasCorrectas.OrderBy(s => s).Distinct());
             if (result) EstadoJuego = "Ganaste!";
             return result;
