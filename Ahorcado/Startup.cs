@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 
 namespace Ahorcado
 {
@@ -29,17 +30,17 @@ namespace Ahorcado
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowMyOrigin",
-                builder => builder.WithOrigins(
-                    "http://localhost:5000/",
-                    "http://localhost:4200/",
-                    "https://localhost:44365/")
-                    .WithMethods("POST", "GET", "PUT")
-                    .WithHeaders("*")
-                    );
+                options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.WithOrigins("https://localhost:44365", "http://localhost:5000", "http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+                });
             });
-
-            services.AddControllers();
+            services.AddControllers()
+        .AddJsonOptions(options => options.JsonSerializerOptions.IgnoreNullValues = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +54,7 @@ namespace Ahorcado
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors();
 
             app.UseAuthorization();
 
