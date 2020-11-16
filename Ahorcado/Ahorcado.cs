@@ -20,6 +20,14 @@ namespace Ahorcado
         public const int NUMERO_INTENTOS = 5;
 
 
+        public List<char> GetLetrasCorrectas()
+        {
+            return this.LetrasCorrectas;
+        }
+        public List<char> GetLetrasIncorrectas()
+        {
+            return LetrasIncorrectas;
+        }
         public Ahorcado()
         {
             Palabra = Palabras.GetPalabraAleatoria();
