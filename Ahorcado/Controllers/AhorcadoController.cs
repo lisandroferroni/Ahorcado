@@ -65,7 +65,13 @@ namespace Ahorcado.Controllers
         [ActionName("estado")]
         public string GetEstadoJuego()
         {
-            return Ahorcado.Instance.MostrarEstadoJuego();
+            return JsonConvert.SerializeObject(
+                new Result
+                {
+                    Success = true,
+                    Value = Ahorcado.Instance.MostrarEstadoJuego(),
+                    Info = Ahorcado.Instance.MostrarEstadoJuego()
+                }); 
         }
 
         [HttpGet()]
