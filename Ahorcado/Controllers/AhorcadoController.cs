@@ -65,7 +65,13 @@ namespace Ahorcado.Controllers
         [ActionName("estado")]
         public string GetEstadoJuego()
         {
-            return Ahorcado.Instance.MostrarEstadoJuego();
+            return JsonConvert.SerializeObject(
+                new Result
+                {
+                    Success = true,
+                    Value = Ahorcado.Instance.MostrarEstadoJuego(),
+                    Info = Ahorcado.Instance.MostrarEstadoJuego()
+                }); 
         }
 
         [HttpGet()]
@@ -73,6 +79,30 @@ namespace Ahorcado.Controllers
         public string GetPalabra()
         {
             return Ahorcado.Instance.GetPalabra();
+        }
+        [HttpGet()]
+        [ActionName("longitudPalabra")]
+        public string GetLongitudPalabra()
+        {
+            return Ahorcado.Instance.GetPalabra();
+        }
+        [HttpGet()]
+        [ActionName("intentosRestantes")]
+        public int GetNumeroIntentos()
+        {
+            return Ahorcado.Instance.IntentosRestantes;
+        }
+        [HttpGet()]
+        [ActionName("letrasCorrectas")]
+        public List<char> GetLetrasCorrectas ()
+        {
+            return Ahorcado.Instance.GetLetrasCorrectas();
+        }
+        [HttpGet()]
+        [ActionName("letrasIncorrectas")]
+        public List<char> GetLetrasIncorrectas()
+        {
+            return Ahorcado.Instance.GetLetrasIncorrectas();
         }
     }
 }

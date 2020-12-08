@@ -10,4 +10,12 @@ namespace Ahorcado.Util
         public string Value { get; set; }
         public string Info { get; set; }
     }
+    public class ResultList
+    {
+        public bool Success { get; set; }
+        public List<char> ValueList { get; set; }
+        public string Info { get; set; }
+    }
+
+    
 }

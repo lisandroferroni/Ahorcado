@@ -17,9 +17,17 @@ namespace Ahorcado
 
         public List<char> LetrasCorrectas = new List<char>();
         public List<char> LetrasIncorrectas = new List<char>();
-        public const int NUMERO_INTENTOS = 5;
+        public const int NUMERO_INTENTOS = 4;
 
 
+        public List<char> GetLetrasCorrectas()
+        {
+            return this.LetrasCorrectas;
+        }
+        public List<char> GetLetrasIncorrectas()
+        {
+            return LetrasIncorrectas;
+        }
         public Ahorcado()
         {
             Palabra = Palabras.GetPalabraAleatoria();
@@ -60,8 +68,7 @@ namespace Ahorcado
             bool result;
             if (Palabra.Contains(letra))
             {
-                LetrasCorrectas.Add(letra);
-                
+                LetrasCorrectas.Add(letra); 
                 result = true;
             }
             else
