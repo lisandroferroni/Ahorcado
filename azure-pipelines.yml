@@ -41,8 +41,10 @@ steps:
     publishTestResults: true
     projects: '**/Test.csproj'
 
-- task: AzureWebApp@1
+- task: AzureCLI@2
   inputs:
     azureSubscription: 'Ahorcadoapi2'
-    appName: 'Ahorcadoapi2'
-    package: $(System.DefaultWorkingDirectory)/**/*.zip    
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az webapp up'
+    useGlobalConfig: true
