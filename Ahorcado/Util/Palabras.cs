@@ -19,7 +19,15 @@ namespace Ahorcado.Util
             "monitor",
             "escritorio",
             "programa",
-            "facultad"
+            "facultad",
+            "hipopotamo",
+            "elefante",
+            "auto",
+            "rinoceronte",
+            "magia",
+            "television",
+            "ruleman",
+            "pelota"
         }; 
 
         public static string GetPalabraAleatoria()

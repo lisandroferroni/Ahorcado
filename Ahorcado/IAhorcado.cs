@@ -7,7 +7,7 @@ namespace Ahorcado
         string Palabra { get; set; }
         Usuario Usuario { get; set; }
 
-        bool? ArriesgaLetra(char letra);
+        bool ArriesgaLetra(char letra);
         bool ArriesgaPalabra(string palabra);
         bool? ContieneLetraCorrecta(char letra);
         bool? ContieneLetraIncorrecta(char letra);
