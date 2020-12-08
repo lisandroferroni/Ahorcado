@@ -40,3 +40,9 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration) --collect "Code coverage"'
     publishTestResults: true
     projects: '**/Test.csproj'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Ahorcadoapi2'
+    appName: 'Ahorcadoapi2'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip    
