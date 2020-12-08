@@ -41,10 +41,13 @@ steps:
     publishTestResults: true
     projects: '**/Test.csproj'
 
-- task: AzureCLI@2
+- task: AzureWebApp@1
   inputs:
     azureSubscription: 'Ahorcadoapi2'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az webapp up'
-    useGlobalConfig: true
+    appType: 'webAppLinux'
+    appName: 'Ahorcadoapi2'
+    deployToSlotOrASE: true
+    resourceGroupName: 'lucio1996_rg_Linux_centralus'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|3.1'
