@@ -39,7 +39,7 @@ steps:
     command: 'test'
     arguments: '--no-build --configuration $(buildConfiguration) --collect "Code coverage"'
     publishTestResults: true
-    projects: '**/Test.csproj'
+    projects: '**/Test*.csproj'
 
 - task: PublishBuildArtifacts@1
   inputs:
