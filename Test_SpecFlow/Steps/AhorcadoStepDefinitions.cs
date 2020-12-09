@@ -27,6 +27,13 @@ namespace Test_SpecFlow.Steps
             _ahorcadoControlador.InicializarAhorcadoMultijugador(palabraInput);
         }
 
+        [When("se arriesga la letra (.*)")]
+        public void CuandoSeArriesgaLaLetra(string letraArriesgada)
+        {
+            ArriesgaLetraInput arriesgaLetraInput = new ArriesgaLetraInput() { Letra = letraArriesgada[0] };
+            _resultado = JsonConvert.DeserializeObject<Result>(_ahorcadoControlador.ArriesgaLetra(arriesgaLetraInput));
+        }
+
         [When("se arriesga la palabra (.*)")]
         public void CuandoSeArriesgaLaPalabra(string palabraArriesgada)
         {
@@ -39,5 +46,13 @@ namespace Test_SpecFlow.Steps
         {
             _resultado.Value.Should().Be(resultado);
         }
+
+        [Then("el estado de juego deberia ser (.*)")]
+        public void ElEstadoDeJuegoDeberiaSer(string resultado)
+        {
+            _resultado = JsonConvert.DeserializeObject<Result>(_ahorcadoControlador.GetEstadoJuego());
+            _resultado.Value.Should().Be(resultado);
+        }
+        
     }
 }
