@@ -47,13 +47,14 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@4
   inputs:
+    ConnectionType: 'AzureRM'
     azureSubscription: 'Ahorcadoapi2'
-    appType: 'webAppLinux'
-    appName: 'Ahorcadoapi2'
+    appType: 'webApp'
+    WebAppName: 'Ahorcadoapi2'
     deployToSlotOrASE: true
     resourceGroupName: 'lucio1996_rg_Linux_centralus'
     slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
     runtimeStack: 'DOTNETCORE|3.1'
