@@ -9,7 +9,7 @@ namespace Test
     {
         [SetUp]
         public void Setup()
-        {            
+        {
         }
 
         [Test]
@@ -17,6 +17,6 @@ namespace Test
         {
             var palabraAleatoria = Palabras.GetPalabraAleatoria();
             Assert.IsNotNull(palabraAleatoria);
-        }        
+        }
     }
 }

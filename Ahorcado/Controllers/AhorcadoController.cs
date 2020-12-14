@@ -71,7 +71,7 @@ namespace Ahorcado.Controllers
                     Success = true,
                     Value = Ahorcado.Instance.MostrarEstadoJuego(),
                     Info = Ahorcado.Instance.MostrarEstadoJuego()
-                }); 
+                });
         }
 
         [HttpGet()]
@@ -94,7 +94,7 @@ namespace Ahorcado.Controllers
         }
         [HttpGet()]
         [ActionName("letrasCorrectas")]
-        public List<char> GetLetrasCorrectas ()
+        public List<char> GetLetrasCorrectas()
         {
             return Ahorcado.Instance.GetLetrasCorrectas();
         }

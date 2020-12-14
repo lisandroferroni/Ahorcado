@@ -23,7 +23,7 @@ namespace Test_SpecFlow.Steps
         [Given("la palabra a adivinar es (.*)")]
         public void DadaLaPrimerPalabra(string palabra)
         {
-            PalabraInput palabraInput = new PalabraInput() { Palabra = palabra};
+            PalabraInput palabraInput = new PalabraInput() { Palabra = palabra };
             _ahorcadoControlador.InicializarAhorcadoMultijugador(palabraInput);
         }
 
@@ -38,7 +38,7 @@ namespace Test_SpecFlow.Steps
         public void CuandoSeArriesgaLaPalabra(string palabraArriesgada)
         {
             PalabraInput palabraInput = new PalabraInput() { Palabra = palabraArriesgada };
-            _resultado = JsonConvert.DeserializeObject<Result> (_ahorcadoControlador.ArriesgaPalabra(palabraInput));
+            _resultado = JsonConvert.DeserializeObject<Result>(_ahorcadoControlador.ArriesgaPalabra(palabraInput));
         }
 
         [Then("el resultado deberia ser (.*)")]
@@ -53,6 +53,5 @@ namespace Test_SpecFlow.Steps
             _resultado = JsonConvert.DeserializeObject<Result>(_ahorcadoControlador.GetEstadoJuego());
             _resultado.Value.Should().Be(resultado);
         }
-        
     }
 }

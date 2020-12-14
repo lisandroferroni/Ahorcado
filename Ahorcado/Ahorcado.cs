@@ -44,8 +44,8 @@ namespace Ahorcado
 
         public static void Init(string palabra = "")
         {
-            Instance = palabra == "" ? new Ahorcado() : new Ahorcado(palabra);            
-        }       
+            Instance = palabra == "" ? new Ahorcado() : new Ahorcado(palabra);
+        }
 
         public bool ArriesgaPalabra(string palabra)
         {
@@ -68,7 +68,7 @@ namespace Ahorcado
             bool result;
             if (Palabra.Contains(letra))
             {
-                LetrasCorrectas.Add(letra); 
+                LetrasCorrectas.Add(letra);
                 result = true;
             }
             else
@@ -76,7 +76,7 @@ namespace Ahorcado
                 LetrasIncorrectas.Add(letra);
                 IntentosRestantes--;
                 result = false;
-            }            
+            }
             Gano();
             return result;
         }

@@ -28,7 +28,7 @@ namespace Ahorcado.Util
             "television",
             "ruleman",
             "pelota"
-        }; 
+        };
 
         public static string GetPalabraAleatoria()
         {

@@ -16,6 +16,4 @@ namespace Ahorcado.Util
         public List<char> ValueList { get; set; }
         public string Info { get; set; }
     }
-
-    
 }
