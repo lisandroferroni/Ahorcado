@@ -33,7 +33,7 @@ namespace Ahorcado
                 options.AddDefaultPolicy(
                 builder =>
                 {
-                    builder.WithOrigins("https://localhost:44365", "http://localhost:5000", "http://localhost:4200", "https://ahorcadofrontend.azurewebsites.net/")
+                    builder.WithOrigins("https://localhost:44365", "http://localhost:5000", "http://localhost:4200", "https://ahorcadofrontend.azurewebsites.net")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
