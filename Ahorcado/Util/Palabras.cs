@@ -15,7 +15,6 @@ namespace Ahorcado.Util
             "teclado",
             "celular",
             "papel",
-            "pizarron",
             "monitor",
             "escritorio",
             "programa",

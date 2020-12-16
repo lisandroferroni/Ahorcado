@@ -136,5 +136,17 @@ namespace Test
             Assert.IsFalse(result);
             Assert.AreNotEqual("Ganaste!", ahorcado.MostrarEstadoJuego());
         }
+
+        [Test]
+        public void TestGetPalabraEnJuego()
+        {
+            //arrange
+            ahorcado.ArriesgaLetra('p');
+            ahorcado.ArriesgaLetra('a');
+            //act
+            var result = ahorcado.GetPalabraEnJuego();
+            //assert
+            Assert.AreEqual("pa-a--a", result);
+        }
     }
 }

@@ -53,6 +53,13 @@ namespace Test_SpecFlow.Steps
             botonPorPalabra.Click();
         }
 
+        [When("hago click en el boton reiniciar juego")]
+        public void ClickEnBotonReiniciarJuego()
+        {
+            var botonPorPalabra = chromeDriver.FindElementById("ReiniciarJuegoButton");
+            botonPorPalabra.Click();
+        }
+
         [When("se arriesga la letra (.*)")]
         public void CuandoSeArriesgaLaLetra(string letraArriesgada)
         {
@@ -64,7 +71,7 @@ namespace Test_SpecFlow.Steps
             var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
             waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorLetra")));
             botonAdivinarPalabra.Click();
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Thread.Sleep(TimeSpan.FromSeconds(3));
         }
 
         [When("se arriesga la palabra (.*)")]
@@ -122,6 +129,16 @@ namespace Test_SpecFlow.Steps
             waitEstadoDeJuego.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("estadoDeJuego")));
             var textoEstadoDeJuego = chromeDriver.FindElementById("estadoDeJuego");
             Assert.IsTrue(textoEstadoDeJuego.Text.Contains(resultado));
+            chromeDriver.Dispose();
+        }
+
+        [Then("el resultado no deberia ser (.*)")]
+        public void ElResultadoNoDeberiaSer(string resultado)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+            var textoEstadoDeJuego = chromeDriver.FindElementById("estadoDeJuego");
+            Assert.IsTrue(!textoEstadoDeJuego.Text.Contains(resultado));
+            chromeDriver.Dispose();
         }
 
         [Then("los intentos restantes deberian ser (.*)")]
@@ -129,6 +146,7 @@ namespace Test_SpecFlow.Steps
         {
             var textoEstadoDeJuego = chromeDriver.FindElementById("CantidadIntentosRestantes");
             Assert.IsTrue(textoEstadoDeJuego.Text.Contains(resultado));
+            chromeDriver.Dispose();
         }
 
         [Then("el estado de juego deberia ser (.*)")]
@@ -136,6 +154,7 @@ namespace Test_SpecFlow.Steps
         {
             _resultado = JsonConvert.DeserializeObject<Result>(_ahorcadoControlador.GetEstadoJuego());
             _resultado.Value.Should().Be(resultado);
+            chromeDriver.Dispose();
         }
     }
 }
