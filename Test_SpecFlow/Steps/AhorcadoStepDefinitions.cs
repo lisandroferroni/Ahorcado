@@ -13,6 +13,7 @@ using System.Threading;
 using System;
 using System.IO;
 using System.Reflection;
+using ExpectedConditions = OpenQA.Selenium.Support.UI.ExpectedConditions;
 
 namespace Test_SpecFlow.Steps
 {
@@ -56,12 +57,12 @@ namespace Test_SpecFlow.Steps
         public void CuandoSeArriesgaLaLetra(string letraArriesgada)
         {
             var searchInputBox = chromeDriver.FindElementById("mat-input-0");
-            var waitRender = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
+            var waitRender = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
             waitRender.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("mat-input-0")));
             searchInputBox.SendKeys(letraArriesgada);
-            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
-            waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorLetra")));
             var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorLetra");
+            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
+            waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorLetra")));
             botonAdivinarPalabra.Click();
             Thread.Sleep(TimeSpan.FromSeconds(2));
         }
@@ -70,22 +71,24 @@ namespace Test_SpecFlow.Steps
         public void CuandoSeArriesgaLaPalabra(string palabraArriesgada)
         {
             var searchInputBox = chromeDriver.FindElementById("mat-input-1");
-            var waitRender = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
+            var waitRender = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
             waitRender.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("mat-input-1")));
             searchInputBox.SendKeys(palabraArriesgada);
-            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
-            waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
+
             var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorPalabra");
+            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
+            waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
             botonAdivinarPalabra.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
         }
         [Given("establezco el tipo de juego (.*)")]
         public void EstablezcoElTipoDeJuego(string tipoJuego)
         { 
-            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2)); 
+            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10)); 
             if (tipoJuego=="PorPalabra")
             {
-                waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
-                var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorPalabra");
+                waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonToggleTipoJuegoPorPalabra")));
+                var botonAdivinarPalabra = chromeDriver.FindElementById("buttonToggleTipoJuegoPorPalabra");
                 botonAdivinarPalabra.Click();
             }
             else if (tipoJuego == "PorLetra")
@@ -100,8 +103,8 @@ namespace Test_SpecFlow.Steps
         public void CuandoSeArriesgaLaPalabraAutomaticamente()
         {
             var waitMostrarPalabraAAdivinar = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
-            waitMostrarPalabraAAdivinar.Until(ExpectedConditions.ElementIsVisible(By.Id("DivFlagMostrarPalabra")));
-            var botonMostrarPalabraAAdivinar = chromeDriver.FindElementById("DivFlagMostrarPalabra");
+            waitMostrarPalabraAAdivinar.Until(ExpectedConditions.ElementIsVisible(By.Id("ButtonFlagPalabraAAdivinar")));
+            var botonMostrarPalabraAAdivinar = chromeDriver.FindElementById("ButtonFlagPalabraAAdivinar");
             botonMostrarPalabraAAdivinar.Click();
 
             var waitPalabraAAdivinar = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
@@ -109,6 +112,7 @@ namespace Test_SpecFlow.Steps
             var textoPalabraAAdivinar = chromeDriver.FindElementById("PalabraAAdivinar");
 
             CuandoSeArriesgaLaPalabra(textoPalabraAAdivinar.Text);
+            Thread.Sleep(TimeSpan.FromSeconds(2));
         }
 
         [Then("el resultado deberia ser (.*)")]
