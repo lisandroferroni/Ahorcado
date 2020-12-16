@@ -112,13 +112,13 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Arriesgar una letra incorrecta", SourceLine=7)]
+        [TechTalk.SpecRun.ScenarioAttribute("Arriesgar una letra incorrecta", SourceLine=8)]
         public virtual void ArriesgarUnaLetraIncorrecta()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Arriesgar una letra incorrecta", null, tagsOfScenario, argumentsOfScenario);
-#line 8
+#line 9
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -138,11 +138,8 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 9
- testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 10
- testRunner.And("hago click en el boton por letra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
  testRunner.When("se arriesga la letra x", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -184,34 +181,31 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 16
- testRunner.And("hago click en el boton por letra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 17
  testRunner.When("se arriesga la letra x", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 18
+#line 17
  testRunner.And("se arriesga la letra y", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 18
  testRunner.And("se arriesga la letra z", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 19
  testRunner.And("se arriesga la letra ñ", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
+#line 20
  testRunner.Then("el resultado deberia ser Perdiste", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Reiniciar juego luego de perder", SourceLine=22)]
+        [TechTalk.SpecRun.ScenarioAttribute("Reiniciar juego luego de perder", SourceLine=21)]
         public virtual void ReiniciarJuegoLuegoDePerder()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reiniciar juego luego de perder", null, tagsOfScenario, argumentsOfScenario);
-#line 23
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -231,19 +225,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 24
+#line 23
  testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 25
+#line 24
  testRunner.And("hago click en el boton por palabra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 26
+#line 25
  testRunner.When("se arriesga la palabra incorrecta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 27
+#line 26
  testRunner.And("hago click en el boton reiniciar juego", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 28
+#line 27
  testRunner.Then("el resultado no deberia ser Perdiste", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
