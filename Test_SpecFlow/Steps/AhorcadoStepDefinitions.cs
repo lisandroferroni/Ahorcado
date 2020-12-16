@@ -55,10 +55,10 @@ namespace Test_SpecFlow.Steps
         {
             var searchInputBox = chromeDriver.FindElementById("mat-input-0");
             var waitRender = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
-            waitRender.Until(ExpectedConditions.ElementIsVisible(By.Id("mat-input-0")));
+            waitRender.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("mat-input-0")));
             searchInputBox.SendKeys(letraArriesgada);
             var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
-            waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorLetra")));
+            waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorLetra")));
             var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorLetra");
             botonAdivinarPalabra.Click();
             Thread.Sleep(TimeSpan.FromSeconds(2));
@@ -69,10 +69,10 @@ namespace Test_SpecFlow.Steps
         {
             var searchInputBox = chromeDriver.FindElementById("mat-input-1");
             var waitRender = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
-            waitRender.Until(ExpectedConditions.ElementIsVisible(By.Id("mat-input-1")));
+            waitRender.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("mat-input-1")));
             searchInputBox.SendKeys(palabraArriesgada);
             var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2));
-            waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
+            waitRenderButton.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
             var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorPalabra");
             botonAdivinarPalabra.Click();
         }
@@ -81,7 +81,7 @@ namespace Test_SpecFlow.Steps
         public void ElResultadoDeberiaSer(string resultado)
         {
             var waitEstadoDeJuego = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
-            waitEstadoDeJuego.Until(ExpectedConditions.ElementIsVisible(By.Id("estadoDeJuego")));
+            waitEstadoDeJuego.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("estadoDeJuego")));
             var textoEstadoDeJuego = chromeDriver.FindElementById("estadoDeJuego");
             Assert.IsTrue(textoEstadoDeJuego.Text.Contains(resultado));
         }
