@@ -1,10 +1,10 @@
 ﻿Feature: Ahorcado
 
-#Scenario: Arriesgar palabra completa correcta
-#	Given Navegue a la url del ahorcado
-#	And la palabra a adivinar es palabra
-#	When se arriesga la palabra palabra
-#	Then el resultado deberia ser Ganaste
+Scenario: Arriesgar palabra completa correcta
+	Given Navegue a la url del ahorcado
+	And la palabra a adivinar es palabra
+	When se arriesga la palabra palabra
+	Then el resultado deberia ser Ganaste
 
 Scenario: Arriesgar palabra completa incorrecta
 	Given Navegue a la url del ahorcado
