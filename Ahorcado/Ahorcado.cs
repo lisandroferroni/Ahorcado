@@ -131,10 +131,10 @@ namespace Ahorcado
 
         public string GetPalabraEnJuego()
         {
-            var palabraEnJuego = new char[Palabra.Length];            
+            var palabraEnJuego = new char[Palabra.Length];
             int posicion = 0;
 
-            foreach(var caracter in Palabra.ToCharArray())
+            foreach (var caracter in Palabra.ToCharArray())
             {
                 palabraEnJuego[posicion] = this.LetrasCorrectas.Contains(caracter) ? caracter : '-';
                 posicion++;
