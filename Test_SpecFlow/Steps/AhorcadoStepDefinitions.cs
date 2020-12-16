@@ -11,6 +11,8 @@ using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium;
 using System.Threading;
 using System;
+using System.IO;
+using System.Reflection;
 
 namespace Test_SpecFlow.Steps
 {
@@ -26,7 +28,7 @@ namespace Test_SpecFlow.Steps
         public AhorcadoStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            chromeDriver = new ChromeDriver(@"C:\Users\fan_a\Desktop");
+            chromeDriver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
         }
 
         [Given("Navegue a la url del ahorcado")]
