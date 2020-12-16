@@ -5,6 +5,7 @@ Scenario: Arriesgar palabra completa incorrecta
 	And hago click en el boton por palabra
 	When se arriesga la palabra incorrecta
 	Then el resultado deberia ser Perdiste
+
 Scenario: Arriesgar una letra incorrecta
 	Given Navegue a la url del ahorcado
 	And hago click en el boton por letra
