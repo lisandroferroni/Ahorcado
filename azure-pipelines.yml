@@ -66,15 +66,6 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\Test_SpecFlow.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -86,3 +77,12 @@ steps:
     slotName: 'production'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
     runtimeStack: 'DOTNETCORE|3.1'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\Test_SpecFlow.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
