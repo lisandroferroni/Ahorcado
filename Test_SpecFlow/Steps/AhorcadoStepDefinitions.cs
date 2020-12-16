@@ -40,7 +40,7 @@ namespace Test_SpecFlow.Steps
         public void ClickEnBotonPorPalabra()
         {
             var botonPorPalabra = chromeDriver.FindElementById("buttonToggleTipoJuegoPorPalabra");
-            botonPorPalabra.Click();            
+            botonPorPalabra.Click();
         }
 
         [Given("hago click en el boton por letra")]
@@ -85,7 +85,7 @@ namespace Test_SpecFlow.Steps
             var textoEstadoDeJuego = chromeDriver.FindElementById("estadoDeJuego");
             Assert.IsTrue(textoEstadoDeJuego.Text.Contains(resultado));
         }
-        
+
         [Then("los intentos restantes deberian ser (.*)")]
         public void LosIntentosRestantesDeberianSer(string resultado)
         {
