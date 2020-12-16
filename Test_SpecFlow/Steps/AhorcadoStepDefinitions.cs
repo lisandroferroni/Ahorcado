@@ -21,12 +21,12 @@ namespace Test_SpecFlow.Steps
         private Ahorcado.Ahorcado _ahorcado { get; set; }
         private readonly AhorcadoController _ahorcadoControlador = new AhorcadoController();
         private Result _resultado { get; set; }
-        private ChromeDriver chromeDriver;
+        private ChromeDriver chromeDriver; 
 
         public AhorcadoStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            chromeDriver = new ChromeDriver(@"C:\Users\fan_a\Desktop");
+            chromeDriver = new ChromeDriver(@"C:\Users\genti\Documents\SISTEMAS\UTN\5 AÑO\Metodologías agiles\SPEC FLOW");
         }
 
         [Given("Navegue a la url del ahorcado")]
@@ -75,6 +75,38 @@ namespace Test_SpecFlow.Steps
             waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
             var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorPalabra");
             botonAdivinarPalabra.Click();
+        }
+        [Given("establezco el tipo de juego (.*)")]
+        public void EstablezcoElTipoDeJuego(string tipoJuego)
+        { 
+            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(2)); 
+            if (tipoJuego=="PorPalabra")
+            {
+                waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonJuegoPorPalabra")));
+                var botonAdivinarPalabra = chromeDriver.FindElementById("buttonJuegoPorPalabra");
+                botonAdivinarPalabra.Click();
+            }
+            else if (tipoJuego == "PorLetra")
+            {
+                waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonToggleTipoJuegoPorLetra")));
+                var botonAdivinarLetra = chromeDriver.FindElementById("buttonToggleTipoJuegoPorLetra");
+                botonAdivinarLetra.Click();
+            }
+        }
+
+        [When("se arriesga automaticamente la palabra a adivinar")]
+        public void CuandoSeArriesgaLaPalabraAutomaticamente()
+        {
+            var waitMostrarPalabraAAdivinar = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
+            waitMostrarPalabraAAdivinar.Until(ExpectedConditions.ElementIsVisible(By.Id("DivFlagMostrarPalabra")));
+            var botonMostrarPalabraAAdivinar = chromeDriver.FindElementById("DivFlagMostrarPalabra");
+            botonMostrarPalabraAAdivinar.Click();
+
+            var waitPalabraAAdivinar = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10));
+            waitPalabraAAdivinar.Until(ExpectedConditions.ElementIsVisible(By.Id("PalabraAAdivinar")));
+            var textoPalabraAAdivinar = chromeDriver.FindElementById("PalabraAAdivinar");
+
+            CuandoSeArriesgaLaPalabra(textoPalabraAAdivinar.Text);
         }
 
         [Then("el resultado deberia ser (.*)")]

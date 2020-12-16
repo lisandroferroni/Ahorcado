@@ -100,10 +100,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 5
- testRunner.And("la palabra a adivinar es palabra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("establezco el tipo de juego PorPalabra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 6
- testRunner.When("se arriesga la palabra palabra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("se arriesga automaticamente la palabra a adivinar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
  testRunner.Then("el resultado deberia ser Ganaste", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

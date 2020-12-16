@@ -2,8 +2,8 @@
 
 Scenario: Arriesgar palabra completa correcta
 	Given Navegue a la url del ahorcado
-	And la palabra a adivinar es palabra
-	When se arriesga la palabra palabra
+	And establezco el tipo de juego PorPalabra 
+	When se arriesga automaticamente la palabra a adivinar
 	Then el resultado deberia ser Ganaste
 
 Scenario: Arriesgar palabra completa incorrecta
