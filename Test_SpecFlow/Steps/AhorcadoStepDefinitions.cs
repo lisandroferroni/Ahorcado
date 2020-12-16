@@ -85,6 +85,13 @@ namespace Test_SpecFlow.Steps
             var textoEstadoDeJuego = chromeDriver.FindElementById("estadoDeJuego");
             Assert.IsTrue(textoEstadoDeJuego.Text.Contains(resultado));
         }
+        
+        [Then("los intentos restantes deberian ser (.*)")]
+        public void LosIntentosRestantesDeberianSer(string resultado)
+        {
+            var textoEstadoDeJuego = chromeDriver.FindElementById("CantidadIntentosRestantes");
+            Assert.IsTrue(textoEstadoDeJuego.Text.Contains(resultado));
+        }
 
         [Then("el estado de juego deberia ser (.*)")]
         public void ElEstadoDeJuegoDeberiaSer(string resultado)
