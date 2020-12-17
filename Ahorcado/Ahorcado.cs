@@ -134,7 +134,7 @@ namespace Ahorcado
             int posicion = 0;
             foreach (var caracter in Palabra.ToCharArray())
             {
-                palabraEnJuego[posicion] = this.LetrasCorrectas.Contains(caracter) ? caracter : '_';
+                palabraEnJuego[posicion] = this.LetrasCorrectas.Contains(caracter) ? caracter : '-';
                 posicion++;
             }
             return new string(palabraEnJuego);

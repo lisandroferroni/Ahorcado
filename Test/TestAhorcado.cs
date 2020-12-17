@@ -144,7 +144,7 @@ namespace Test
             ahorcado.ArriesgaLetra('p');
             ahorcado.ArriesgaLetra('a');
             //act
-            var result = ahorcado.GetPalabraEnJuego();
+            string result = ahorcado.GetPalabraEnJuego();
             //assert
             Assert.AreEqual("pa-a--a", result);
         }
