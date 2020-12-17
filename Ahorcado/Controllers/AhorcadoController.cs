@@ -112,10 +112,11 @@ namespace Ahorcado.Controllers
         [HttpGet()]
         [ActionName("palabraEnJuego")]
         public string GetPalabraEnJuego()
-        { 
+        {
             return JsonConvert.SerializeObject(
                 new Result
                 {
+                    Success = true,
                     Value = Ahorcado.Instance.GetPalabraEnJuego(),
                     Info = Ahorcado.Instance.GetLongitudPalabra().ToString()
                 });

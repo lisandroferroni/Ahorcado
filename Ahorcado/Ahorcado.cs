@@ -14,7 +14,6 @@ namespace Ahorcado
         public Usuario Usuario { get; set; }
         public static Ahorcado Instance { get; private set; }
         public int IntentosRestantes { get; set; }
-
         public List<char> LetrasCorrectas = new List<char>();
         public List<char> LetrasIncorrectas = new List<char>();
         public const int NUMERO_INTENTOS = 4;
@@ -131,15 +130,13 @@ namespace Ahorcado
 
         public string GetPalabraEnJuego()
         {
-            var palabraEnJuego = new char[Palabra.Length];
+            char[] palabraEnJuego = new char[Palabra.Length];
             int posicion = 0;
-
             foreach (var caracter in Palabra.ToCharArray())
             {
                 palabraEnJuego[posicion] = this.LetrasCorrectas.Contains(caracter) ? caracter : '_';
                 posicion++;
             }
-
             return new string(palabraEnJuego);
         }
     }

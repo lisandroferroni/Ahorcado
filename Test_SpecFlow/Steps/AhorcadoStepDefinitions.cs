@@ -81,23 +81,6 @@ namespace Test_SpecFlow.Steps
             botonAdivinarPalabra.Click();
             Thread.Sleep(TimeSpan.FromSeconds(2));
         }
-        [Given("establezco el tipo de juego (.*)")]
-        public void EstablezcoElTipoDeJuego(string tipoJuego)
-        { 
-            var waitRenderButton = new WebDriverWait(chromeDriver, System.TimeSpan.FromSeconds(10)); 
-            if (tipoJuego=="PorPalabra")
-            {
-                waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonToggleTipoJuegoPorPalabra")));
-                var botonAdivinarPalabra = chromeDriver.FindElementById("buttonToggleTipoJuegoPorPalabra");
-                botonAdivinarPalabra.Click();
-            }
-            else if (tipoJuego == "PorLetra")
-            {
-                waitRenderButton.Until(ExpectedConditions.ElementIsVisible(By.Id("buttonToggleTipoJuegoPorLetra")));
-                var botonAdivinarLetra = chromeDriver.FindElementById("buttonToggleTipoJuegoPorLetra");
-                botonAdivinarLetra.Click();
-            }
-        }
 
         [When("se arriesga automaticamente la palabra a adivinar")]
         public void CuandoSeArriesgaLaPalabraAutomaticamente()
