@@ -46,13 +46,6 @@ namespace Test_SpecFlow.Steps
             botonPorPalabra.Click();
         }
 
-        [Given("hago click en el boton por letra")]
-        public void ClickEnBotonPorLetra()
-        {
-            var botonPorPalabra = chromeDriver.FindElementById("buttonToggleTipoJuegoPorLetra");
-            botonPorPalabra.Click();
-        }
-
         [When("hago click en el boton reiniciar juego")]
         public void ClickEnBotonReiniciarJuego()
         {

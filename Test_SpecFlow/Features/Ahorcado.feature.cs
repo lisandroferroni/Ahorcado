@@ -184,9 +184,6 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
- testRunner.And("hago click en el boton por letra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 12
  testRunner.When("se arriesga la letra x", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
@@ -225,35 +222,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 16
  testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
- testRunner.And("hago click en el boton por letra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 18
+#line 16
  testRunner.When("se arriesga la letra x", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 17
  testRunner.And("se arriesga la letra y", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 18
  testRunner.And("se arriesga la letra z", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
+#line 19
  testRunner.And("se arriesga la letra ñ", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 20
  testRunner.Then("el resultado deberia ser Perdiste", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Reiniciar juego luego de perder", SourceLine=23)]
+        [TechTalk.SpecRun.ScenarioAttribute("Reiniciar juego luego de perder", SourceLine=21)]
         public virtual void ReiniciarJuegoLuegoDePerder()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reiniciar juego luego de perder", null, tagsOfScenario, argumentsOfScenario);
-#line 24
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -273,19 +267,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
+#line 23
  testRunner.Given("Navegue a la url del ahorcado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 26
+#line 24
  testRunner.And("hago click en el boton por palabra", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 27
+#line 25
  testRunner.When("se arriesga la palabra incorrecta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 26
  testRunner.And("hago click en el boton reiniciar juego", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 27
  testRunner.Then("el resultado no deberia ser Perdiste", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -14,13 +14,11 @@ Scenario: Arriesgar palabra completa incorrecta
 
 Scenario: Arriesgar una letra incorrecta
 	Given Navegue a la url del ahorcado
-	And hago click en el boton por letra
 	When se arriesga la letra x	
 	Then los intentos restantes deberian ser 3
 
 Scenario: Arriesgar letras incorrectas hasta perder
 	Given Navegue a la url del ahorcado
-	And hago click en el boton por letra
 	When se arriesga la letra x
 	And se arriesga la letra y
 	And se arriesga la letra z
