@@ -24,7 +24,7 @@ namespace Test_SpecFlow.Steps
         private Ahorcado.Ahorcado _ahorcado { get; set; }
         private readonly AhorcadoController _ahorcadoControlador = new AhorcadoController();
         private Result _resultado { get; set; }
-        private ChromeDriver chromeDriver; 
+        private ChromeDriver chromeDriver;
 
         public AhorcadoStepDefinitions(ScenarioContext scenarioContext)
         {
